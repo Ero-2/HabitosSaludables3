@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
+             x:Class="HabitosSaludables.Views.MisHabitosPage"
+             Title="Mis Hábitos">
+	<Grid RowDefinitions="Auto,*">
+		<Button Text="+ Agregar Hábito" Command="{Binding AgregarNuevoHabitoCommand}"
+                Margin="10" BackgroundColor="#4CAF50" TextColor="White" />
+
+		<!-- RefreshView envuelve a CollectionView y maneja pull-to-refresh -->
+		<RefreshView Grid.Row="1"
+                     IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                     Command="{Binding LoadHabitosCommand}">
+			<CollectionView ItemsSource="{Binding Habitos}">
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid Padding="10" ColumnDefinitions="Auto,*,Auto,Auto">
+							<Label Grid.Column="0" Text="{Binding Icono}" FontSize="32" VerticalOptions="Center"/>
+							<VerticalStackLayout Grid.Column="1" Margin="10,0">
+								<Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold"/>
+								<Label Text="{Binding Categoria}" FontSize="14" TextColor="Gray"/>
+								<Label Text="{Binding RachaActual, StringFormat='Racha: {0} días'}" FontSize="12"/>
+							</VerticalStackLayout>
+							<Button Grid.Column="2" Text="✓"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MisHabitosViewModel}}, Path=ToggleCompletadoCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="#4CAF50"
+                                    IsEnabled="{Binding CompletadoHoy, Converter={StaticResource InverseBoolConverter}}"
+                                    WidthRequest="50" />
+							<Button Grid.Column="3" Text="🗑"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MisHabitosViewModel}}, Path=EliminarHabitoCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="Transparent" TextColor="Red" />
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</RefreshView>
+	</Grid>
+</ContentPage>

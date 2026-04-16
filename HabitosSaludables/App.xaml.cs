@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using HabitosSaludables.Converters;
+using HabitosSaludables.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HabitosSaludables
 {
@@ -7,6 +9,9 @@ namespace HabitosSaludables
         public App()
         {
             InitializeComponent();
+          
+            Routing.RegisterRoute("MisHabitosPage", typeof(MisHabitosPage));
+            Routing.RegisterRoute("AgregarHabitoPage", typeof(AgregarHabitoPage));
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

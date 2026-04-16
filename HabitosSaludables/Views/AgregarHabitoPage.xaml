@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitosSaludables.Views.AgregarHabitoPage"
+             Title="Nuevo Hábito">
+    <VerticalStackLayout Spacing="20" Padding="20">
+        <Entry Placeholder="Nombre del hábito" Text="{Binding Nombre}" />
+        <Picker Title="Categoría" ItemsSource="{Binding Categorias}" SelectedItem="{Binding Categoria}" />
+        <Entry Placeholder="Icono (emoji)" Text="{Binding Icono}" MaxLength="2" />
+        <Button Text="Guardar" Command="{Binding GuardarHabitoCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+        <Button Text="Cancelar" Command="{Binding CancelarCommand}" BackgroundColor="#9E9E9E" TextColor="White"/>
+    </VerticalStackLayout>
+</ContentPage>
