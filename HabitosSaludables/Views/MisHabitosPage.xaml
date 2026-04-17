@@ -1,41 +1,144 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
              x:Class="HabitosSaludables.Views.MisHabitosPage"
-             Title="Mis Hábitos">
-	<Grid RowDefinitions="Auto,*">
-		<Button Text="+ Agregar Hábito" Command="{Binding AgregarNuevoHabitoCommand}"
-                Margin="10" BackgroundColor="#4CAF50" TextColor="White" />
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
 
-		<!-- RefreshView envuelve a CollectionView y maneja pull-to-refresh -->
+	<Grid RowDefinitions="Auto,*">
+
+		<!-- Header industrial con borde inferior grueso -->
+		<VerticalStackLayout Grid.Row="0"
+                             BackgroundColor="White"
+                             Padding="20,48,20,18"
+                             Spacing="0">
+
+			<!-- Etiqueta tipo monospace -->
+			<Label Text="VISTA GENERAL"
+                   FontFamily="SpaceMono"
+                   FontSize="9"
+                   TextColor="#aaaaaa"
+                   CharacterSpacing="1.8"
+                   Margin="0,0,0,4"/>
+
+			<!-- Título bold sin adornos -->
+			<Label Text="Mis Hábitos"
+                   FontFamily="Syne"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="#111111"/>
+
+			<!-- Separador grueso estilo brutalista -->
+			<BoxView BackgroundColor="#111111"
+                     HeightRequest="3"
+                     Margin="0,14,0,0"/>
+
+			<!-- Botón Agregar: ancho completo, esquinas cuadradas, fondo negro -->
+			<Button Text="+ AGREGAR NUEVO HÁBITO"
+                    Command="{Binding AgregarNuevoHabitoCommand}"
+                    BackgroundColor="#111111"
+                    TextColor="White"
+                    FontFamily="SpaceMono"
+                    FontSize="10"
+                    CornerRadius="0"
+                    HeightRequest="44"
+                    Margin="0,0"/>
+
+		</VerticalStackLayout>
+
+		<!-- Lista con RefreshView -->
 		<RefreshView Grid.Row="1"
                      IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                     Command="{Binding LoadHabitosCommand}">
+                     Command="{Binding LoadHabitosCommand}"
+                     BackgroundColor="White">
+
 			<CollectionView ItemsSource="{Binding Habitos}">
 				<CollectionView.ItemTemplate>
 					<DataTemplate>
-						<Grid Padding="10" ColumnDefinitions="Auto,*,Auto,Auto">
-							<Label Grid.Column="0" Text="{Binding Icono}" FontSize="32" VerticalOptions="Center"/>
-							<VerticalStackLayout Grid.Column="1" Margin="10,0">
-								<Label Text="{Binding Nombre}" FontSize="18" FontAttributes="Bold"/>
-								<Label Text="{Binding Categoria}" FontSize="14" TextColor="Gray"/>
-								<Label Text="{Binding RachaActual, StringFormat='Racha: {0} días'}" FontSize="12"/>
+						<Grid Padding="20,14,16,14"
+                              ColumnDefinitions="24,46,*,36,30"
+                              ColumnSpacing="0">
+
+							<!-- Número de índice monospace -->
+							<Label Grid.Column="0"
+                                   Text="{Binding Index, StringFormat='{0:D2}'}"
+                                   FontFamily="SpaceMono"
+                                   FontSize="9"
+                                   TextColor="#cccccc"
+                                   VerticalOptions="Center"/>
+
+							<!-- Emoji icono -->
+							<Label Grid.Column="1"
+                                   Text="{Binding Icono}"
+                                   FontSize="22"
+                                   VerticalOptions="Center"
+                                   Margin="4,0"/>
+
+							<!-- Info nombre + meta -->
+							<VerticalStackLayout Grid.Column="2"
+                                                 VerticalOptions="Center"
+                                                 Spacing="2">
+								<Label Text="{Binding Nombre}"
+                                       FontFamily="Syne"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#111111"/>
+								<Label Text="{Binding RachaActual, StringFormat='Racha: {0} días'}"
+                                       FontFamily="SpaceMono"
+                                       FontSize="9"
+                                       TextColor="#aaaaaa"/>
 							</VerticalStackLayout>
-							<Button Grid.Column="2" Text="✓"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MisHabitosViewModel}}, Path=ToggleCompletadoCommand}"
-                                    CommandParameter="{Binding .}"
-                                    BackgroundColor="#4CAF50"
-                                    IsEnabled="{Binding CompletadoHoy, Converter={StaticResource InverseBoolConverter}}"
-                                    WidthRequest="50" />
-							<Button Grid.Column="3" Text="🗑"
+
+							<!-- Check cuadrado brutalista -->
+							<Border Grid.Column="3"
+                                    StrokeThickness="2"
+                                    Stroke="#111111"
+                                    BackgroundColor="{Binding CompletadoHoy, Converter={StaticResource BoolToColorConverter}}"
+                                    WidthRequest="28"
+                                    HeightRequest="28"
+                                    VerticalOptions="Center">
+								<Border.StrokeShape>
+									<RoundRectangle CornerRadius="0"/>
+								</Border.StrokeShape>
+								<Button BackgroundColor="Transparent"
+                                        TextColor="{Binding CompletadoHoy, Converter={StaticResource BoolToCheckColorConverter}}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        Text="✓"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MisHabitosViewModel}}, Path=ToggleCompletadoCommand}"
+                                        CommandParameter="{Binding .}"
+                                        IsEnabled="{Binding CompletadoHoy, Converter={StaticResource InverseBoolConverter}}"
+                                        Padding="0"
+                                        WidthRequest="28"
+                                        HeightRequest="28"/>
+							</Border>
+
+							<!-- Botón eliminar sutil -->
+							<Button Grid.Column="4"
+                                    Text="🗑"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MisHabitosViewModel}}, Path=EliminarHabitoCommand}"
                                     CommandParameter="{Binding .}"
-                                    BackgroundColor="Transparent" TextColor="Red" />
+                                    BackgroundColor="Transparent"
+                                    TextColor="#cccccc"
+                                    FontSize="14"
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    Padding="0"
+                                    VerticalOptions="Center"/>
+
 						</Grid>
 					</DataTemplate>
 				</CollectionView.ItemTemplate>
+
+				<!-- Separador entre ítems -->
+				<CollectionView.ItemsLayout>
+					<LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
+				</CollectionView.ItemsLayout>
+
 			</CollectionView>
+
 		</RefreshView>
+
 	</Grid>
 </ContentPage>

@@ -3,122 +3,130 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.BienvenidaPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="White">
+             BackgroundColor="#f9f4ef">
 
-    <Grid RowDefinitions="200,*">
+    <Grid RowDefinitions="220,*">
 
-        <!-- Hero superior oscuro -->
-        <Grid Grid.Row="0" BackgroundColor="#1a1a2e">
+        <!-- Hero orgánico oscuro con formas blob -->
+        <Grid Grid.Row="0" BackgroundColor="#2c2416">
 
-            <!-- Círculo decorativo de fondo -->
+            <!-- Blob decorativo grande (esquina superior derecha) -->
             <Ellipse HorizontalOptions="End"
                      VerticalOptions="Start"
-                     WidthRequest="160"
-                     HeightRequest="160"
-                     Fill="#0d2e22"
-                     Margin="0,-40,-30,0"/>
+                     WidthRequest="140"
+                     HeightRequest="140"
+                     Fill="#4a3826"
+                     Margin="0,-30,-20,0"/>
+
+            <!-- Blob pequeño acento verde (esquina inferior izquierda) -->
+            <Ellipse HorizontalOptions="Start"
+                     VerticalOptions="End"
+                     WidthRequest="70"
+                     HeightRequest="70"
+                     Fill="#6b8f4f"
+                     Opacity="0.4"
+                     Margin="20,0,0,15"/>
 
             <VerticalStackLayout VerticalOptions="Center"
-                                 HorizontalOptions="Center"
+                                 HorizontalOptions="Start"
                                  Spacing="10"
-                                 Padding="24">
+                                 Padding="28,0,28,0">
 
-                <!-- Ícono con borde verde -->
-                <Border BackgroundColor="#172e22"
-                        StrokeThickness="1"
-                        Stroke="#2e6b4f"
-                        HorizontalOptions="Center"
-                        WidthRequest="56"
-                        HeightRequest="56">
+                <!-- Ícono con fondo verde bosque -->
+                <Border BackgroundColor="#6b8f4f"
+                        StrokeThickness="0"
+                        HorizontalOptions="Start"
+                        WidthRequest="52"
+                        HeightRequest="52">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="16"/>
+                        <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
                     <Label Text="🌿"
-                           FontSize="26"
+                           FontSize="24"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"/>
                 </Border>
 
-                <Label Text="Bienvenido"
-                       FontSize="22"
+                <!-- Título serif elegante -->
+                <Label Text="Bienvenido&#10;de vuelta"
+                       FontFamily="PlayfairDisplay"
+                       FontSize="28"
                        FontAttributes="Bold"
-                       TextColor="White"
-                       HorizontalTextAlignment="Center"/>
+                       TextColor="#f5ede2"
+                       LineHeight="1.15"/>
 
-                <Label Text="empieza tu camino hoy"
-                       FontSize="12"
-                       TextColor="#4ecb8d"
-                       CharacterSpacing="1"
-                       HorizontalTextAlignment="Center"/>
+                <Label Text="EMPIEZA TU CAMINO HOY"
+                       FontSize="10"
+                       TextColor="#9b8468"
+                       CharacterSpacing="1.8"/>
 
             </VerticalStackLayout>
         </Grid>
 
-        <!-- Cuerpo inferior blanco -->
+        <!-- Cuerpo inferior cálido -->
         <VerticalStackLayout Grid.Row="1"
-                             Padding="28,36,28,28"
+                             Padding="28,32,28,32"
                              Spacing="14"
                              VerticalOptions="Start">
 
             <Label Text="¿Qué deseas hacer?"
-                   FontSize="13"
-                   TextColor="#b0a99e"
+                   FontSize="12"
+                   TextColor="#b0a090"
                    HorizontalTextAlignment="Center"
-                   Margin="0,0,0,4"/>
+                   Margin="0,0,0,2"/>
 
-            <!-- Botón primario -->
+            <!-- Botón primario redondeado (cápsula) -->
             <Button Text="Registrarse"
                     x:Name="RegistroBtn"
                     Clicked="OnRegisterClicked"
-                    BackgroundColor="#1a1a2e"
-                    TextColor="White"
-                    FontSize="15"
+                    BackgroundColor="#2c2416"
+                    TextColor="#f5ede2"
+                    FontSize="14"
                     FontAttributes="Bold"
-                    CornerRadius="14"
-                    HeightRequest="52"
-                    Shadow="{Shadow Brush=#1a1a2e, Offset='0,4', Radius=12, Opacity=0.25}"/>
+                    CornerRadius="50"
+                    HeightRequest="52"/>
 
-            <!-- Botón outline -->
+            <!-- Botón outline suave -->
             <Border BackgroundColor="Transparent"
                     StrokeThickness="1.5"
-                    Stroke="#e0ddd8"
+                    Stroke="#d4c9bc"
                     HeightRequest="52">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="14"/>
+                    <RoundRectangle CornerRadius="50"/>
                 </Border.StrokeShape>
-                <Button Text="Iniciar Sesión"
+                <Button Text="Iniciar sesión"
                         x:Name="LoginBtn"
                         Clicked="OnLoginClicked"
                         BackgroundColor="Transparent"
-                        TextColor="#1a1a2e"
-                        FontSize="15"
+                        TextColor="#2c2416"
+                        FontSize="14"
                         FontAttributes="Bold"/>
             </Border>
 
-            <!-- Separador sutil -->
+            <!-- Separador con texto -->
             <HorizontalStackLayout HorizontalOptions="Center"
                                    Spacing="10"
-                                   Margin="0,8,0,0">
-                <BoxView BackgroundColor="#e8e5e0"
+                                   Margin="0,6">
+                <BoxView BackgroundColor="#e8e0d4"
                          HeightRequest="1"
-                         WidthRequest="60"
+                         WidthRequest="55"
                          VerticalOptions="Center"/>
                 <Label Text="o continúa con"
-                       FontSize="12"
-                       TextColor="#c0bab2"
+                       FontSize="11"
+                       TextColor="#c5b9aa"
                        VerticalOptions="Center"/>
-                <BoxView BackgroundColor="#e8e5e0"
+                <BoxView BackgroundColor="#e8e0d4"
                          HeightRequest="1"
-                         WidthRequest="60"
+                         WidthRequest="55"
                          VerticalOptions="Center"/>
             </HorizontalStackLayout>
 
             <!-- Versión -->
-            <Label Text="v1.0.0"
-                   FontSize="11"
-                   TextColor="#d0cbc4"
+            <Label Text="v 1.0.0"
+                   FontSize="10"
+                   TextColor="#d0c8bc"
                    HorizontalTextAlignment="Center"
-                   Margin="0,16,0,0"/>
+                   Margin="0,8,0,0"/>
 
         </VerticalStackLayout>
 

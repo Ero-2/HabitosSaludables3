@@ -1,13 +1,233 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.AgregarHabitoPage"
-             Title="Nuevo Hábito">
-    <VerticalStackLayout Spacing="20" Padding="20">
-        <Entry Placeholder="Nombre del hábito" Text="{Binding Nombre}" />
-        <Picker Title="Categoría" ItemsSource="{Binding Categorias}" SelectedItem="{Binding Categoria}" />
-        <Entry Placeholder="Icono (emoji)" Text="{Binding Icono}" MaxLength="2" />
-        <Button Text="Guardar" Command="{Binding GuardarHabitoCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
-        <Button Text="Cancelar" Command="{Binding CancelarCommand}" BackgroundColor="#9E9E9E" TextColor="White"/>
-    </VerticalStackLayout>
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#7c4dff">
+
+	<Grid RowDefinitions="Auto,*">
+
+		<!-- Header violeta con botón back + título -->
+		<Grid Grid.Row="0"
+              BackgroundColor="#7c4dff"
+              Padding="20,52,20,20">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="36"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Botón regresar pill -->
+			<Border Grid.Column="0"
+                    BackgroundColor="#FFFFFF22"
+                    StrokeThickness="0"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    VerticalOptions="Start"
+                    Margin="0,4,0,0">
+				<Border.StrokeShape>
+					<RoundRectangle CornerRadius="8"/>
+				</Border.StrokeShape>
+				<Label Text="‹"
+                       FontSize="20"
+                       TextColor="#FFFFFFCC"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+			</Border>
+
+			<!-- Título + subtítulo -->
+			<VerticalStackLayout Grid.Column="1" Spacing="4">
+				<Label Text="Nuevo&#10;Hábito"
+                       FontFamily="Syne"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       LineHeight="1.1"/>
+				<Label Text="Personaliza tu rutina diaria"
+                       FontSize="11"
+                       TextColor="#FFFFFF88"/>
+			</VerticalStackLayout>
+
+		</Grid>
+
+		<!-- Tarjeta blanca flotante con formulario mejorado -->
+		<ScrollView Grid.Row="1">
+			<Border BackgroundColor="White"
+                    StrokeThickness="0"
+                    Margin="0">
+				<Border.StrokeShape>
+					<RoundRectangle CornerRadius="28,28,0,0"/>
+				</Border.StrokeShape>
+
+				<VerticalStackLayout Padding="24,28,24,32" Spacing="18">
+
+					<!-- Campo Nombre -->
+					<VerticalStackLayout Spacing="7">
+						<Label Text="NOMBRE DEL HÁBITO"
+                               FontFamily="Syne"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               TextColor="#aaaaaa"
+                               CharacterSpacing="1.3"/>
+						<Border BackgroundColor="#f5f3ff"
+                                StrokeThickness="0"
+                                HeightRequest="50">
+							<Border.StrokeShape>
+								<RoundRectangle CornerRadius="12"/>
+							</Border.StrokeShape>
+							<Entry Placeholder="Ej. Beber 2 litros de agua"
+                                   Text="{Binding Nombre}"
+                                   PlaceholderColor="#c5bfee"
+                                   TextColor="#2d1f7a"
+                                   FontSize="13"
+                                   BackgroundColor="Transparent"
+                                   Margin="4,0"/>
+						</Border>
+					</VerticalStackLayout>
+
+					<!-- Selector Categoría con chips visuales -->
+					<VerticalStackLayout Spacing="8">
+						<Label Text="CATEGORÍA"
+                               FontFamily="Syne"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               TextColor="#aaaaaa"
+                               CharacterSpacing="1.3"/>
+						<!-- Picker estándar como fallback funcional -->
+						<Border BackgroundColor="#f5f3ff"
+                                StrokeThickness="0"
+                                HeightRequest="50">
+							<Border.StrokeShape>
+								<RoundRectangle CornerRadius="12"/>
+							</Border.StrokeShape>
+							<Picker Title="Selecciona una categoría"
+                                    ItemsSource="{Binding Categorias}"
+                                    SelectedItem="{Binding Categoria}"
+                                    TitleColor="#c5bfee"
+                                    TextColor="#2d1f7a"
+                                    BackgroundColor="Transparent"
+                                    FontSize="13"
+                                    Margin="4,0"/>
+						</Border>
+					</VerticalStackLayout>
+
+					<!-- Campo Icono -->
+					<VerticalStackLayout Spacing="8">
+						<Label Text="ÍCONO (EMOJI)"
+                               FontFamily="Syne"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               TextColor="#aaaaaa"
+                               CharacterSpacing="1.3"/>
+
+						<!-- Sugerencias rápidas de emojis -->
+						<HorizontalStackLayout Spacing="8" Margin="0,0,0,4">
+							<Border BackgroundColor="#f5f3ff"
+                                    StrokeThickness="0"
+                                    WidthRequest="40"
+                                    HeightRequest="40">
+								<Border.StrokeShape>
+									<RoundRectangle CornerRadius="10"/>
+								</Border.StrokeShape>
+								<Label Text="💧" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+							</Border>
+							<Border BackgroundColor="#f5f3ff"
+                                    StrokeThickness="0"
+                                    WidthRequest="40"
+                                    HeightRequest="40">
+								<Border.StrokeShape>
+									<RoundRectangle CornerRadius="10"/>
+								</Border.StrokeShape>
+								<Label Text="🏃" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+							</Border>
+							<Border BackgroundColor="#f5f3ff"
+                                    StrokeThickness="0"
+                                    WidthRequest="40"
+                                    HeightRequest="40">
+								<Border.StrokeShape>
+									<RoundRectangle CornerRadius="10"/>
+								</Border.StrokeShape>
+								<Label Text="😴" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+							</Border>
+							<Border BackgroundColor="#f5f3ff"
+                                    StrokeThickness="0"
+                                    WidthRequest="40"
+                                    HeightRequest="40">
+								<Border.StrokeShape>
+									<RoundRectangle CornerRadius="10"/>
+								</Border.StrokeShape>
+								<Label Text="🧘" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+							</Border>
+							<Border BackgroundColor="#f5f3ff"
+                                    StrokeThickness="0"
+                                    WidthRequest="40"
+                                    HeightRequest="40">
+								<Border.StrokeShape>
+									<RoundRectangle CornerRadius="10"/>
+								</Border.StrokeShape>
+								<Label Text="📚" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+							</Border>
+							<Border BackgroundColor="#f5f3ff"
+                                    StrokeThickness="0"
+                                    WidthRequest="40"
+                                    HeightRequest="40">
+								<Border.StrokeShape>
+									<RoundRectangle CornerRadius="10"/>
+								</Border.StrokeShape>
+								<Label Text="🥗" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+							</Border>
+						</HorizontalStackLayout>
+
+						<!-- Entry manual -->
+						<Border BackgroundColor="#f5f3ff"
+                                StrokeThickness="0"
+                                HeightRequest="50">
+							<Border.StrokeShape>
+								<RoundRectangle CornerRadius="12"/>
+							</Border.StrokeShape>
+							<Entry Placeholder="O escribe tu emoji aquí"
+                                   Text="{Binding Icono}"
+                                   MaxLength="2"
+                                   PlaceholderColor="#c5bfee"
+                                   TextColor="#2d1f7a"
+                                   FontSize="18"
+                                   BackgroundColor="Transparent"
+                                   Margin="4,0"/>
+						</Border>
+					</VerticalStackLayout>
+
+					<!-- Separador -->
+					<BoxView BackgroundColor="#f0ecff" HeightRequest="1"/>
+
+					<!-- Botones Guardar / Cancelar -->
+					<Grid ColumnDefinitions="*,2*" ColumnSpacing="10" Margin="0,4,0,0">
+
+						<Button Grid.Column="0"
+                                Text="Cancelar"
+                                Command="{Binding CancelarCommand}"
+                                BackgroundColor="#f5f3ff"
+                                TextColor="#7c4dff"
+                                FontFamily="Syne"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="52"/>
+
+						<Button Grid.Column="1"
+                                Text="Guardar hábito"
+                                Command="{Binding GuardarHabitoCommand}"
+                                BackgroundColor="#7c4dff"
+                                TextColor="White"
+                                FontFamily="Syne"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="52"/>
+
+					</Grid>
+
+				</VerticalStackLayout>
+			</Border>
+		</ScrollView>
+
+	</Grid>
 </ContentPage>

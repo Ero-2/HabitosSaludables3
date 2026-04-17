@@ -3,92 +3,113 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.WelcomeModalPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#CC1a1a2e">
+             BackgroundColor="#CC1e1e30">
 
-	<!-- Fondo semitransparente con tap para cerrar -->
-	<Grid>
-		<Grid.GestureRecognizers>
-			<TapGestureRecognizer Tapped="OnBackdropTapped"/>
-		</Grid.GestureRecognizers>
+    <!-- Fondo oscuro semitransparente con tap para cerrar -->
+    <Grid BackgroundColor="Transparent">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnBackdropTapped"/>
+        </Grid.GestureRecognizers>
 
-		<!-- Tarjeta modal centrada -->
-		<Border BackgroundColor="White"
-                StrokeThickness="0"
+        <!-- Aura verde (esquina sup-izq) -->
+        <Ellipse HorizontalOptions="Start"
+                 VerticalOptions="Start"
+                 WidthRequest="200"
+                 HeightRequest="200"
+                 Fill="#4ecb8d"
+                 Opacity="0.07"
+                 Margin="-60,-60,0,0"/>
+
+        <!-- Aura violeta (esquina inf-der) -->
+        <Ellipse HorizontalOptions="End"
+                 VerticalOptions="End"
+                 WidthRequest="160"
+                 HeightRequest="160"
+                 Fill="#7c4dff"
+                 Opacity="0.1"
+                 Margin="0,0,-40,-40"/>
+
+        <!-- Tarjeta modal glassmorphism -->
+        <Border BackgroundColor="#0FFFFFFF"
+                StrokeThickness="1"
+                Stroke="#26FFFFFF"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                WidthRequest="290"
+                WidthRequest="300"
                 Padding="26,28">
-			<Border.StrokeShape>
-				<RoundRectangle CornerRadius="24"/>
-			</Border.StrokeShape>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="24"/>
+            </Border.StrokeShape>
 
-			<VerticalStackLayout Spacing="14" HorizontalOptions="Center">
+            <VerticalStackLayout Spacing="14" HorizontalOptions="Center">
 
-				<!-- Ícono con gradiente verde -->
-				<Border HorizontalOptions="Center"
+                <!-- Ícono con gradiente verde vibrante -->
+                <Border HorizontalOptions="Center"
                         WidthRequest="60"
                         HeightRequest="60"
                         StrokeThickness="0">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="18"/>
-					</Border.StrokeShape>
-					<Border.Background>
-						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-							<GradientStop Color="#4ecb8d" Offset="0.0"/>
-							<GradientStop Color="#2ecc71" Offset="1.0"/>
-						</LinearGradientBrush>
-					</Border.Background>
-					<Label Text="🌿"
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#4ecb8d" Offset="0.0"/>
+                            <GradientStop Color="#2ecc71" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="🌿"
                            FontSize="28"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"/>
-				</Border>
+                </Border>
 
-				<!-- Título -->
-				<Label Text="¡Bienvenido a Hábitos Saludables!"
-                       FontSize="17"
+                <!-- Título -->
+                <Label Text="¡Bienvenido a&#10;Hábitos Saludables!"
+                       FontFamily="Syne"
+                       FontSize="18"
                        FontAttributes="Bold"
-                       TextColor="#1a1a2e"
+                       TextColor="White"
                        HorizontalTextAlignment="Center"
+                       LineHeight="1.25"
                        LineBreakMode="WordWrap"/>
 
-				<!-- Descripción -->
-				<Label Text="Comienza a registrar tu día y construye mejores hábitos paso a paso."
-                       FontSize="13"
-                       TextColor="#a09890"
+                <!-- Descripción -->
+                <Label Text="Comienza a registrar tu día y construye mejores hábitos paso a paso."
+                       FontSize="12"
+                       TextColor="#80FFFFFF"
                        HorizontalTextAlignment="Center"
                        LineBreakMode="WordWrap"
-                       LineHeight="1.4"/>
+                       LineHeight="1.5"/>
 
-				<!-- Separador -->
-				<BoxView BackgroundColor="#f0ede8"
+                <!-- Separador sutil -->
+                <BoxView BackgroundColor="#18FFFFFF"
                          HeightRequest="1"
                          Margin="0,2"/>
 
-				<!-- Botón principal -->
-				<Button Text="¡Vamos! 🚀"
+                <!-- Botón principal verde -->
+                <Button Text="¡Vamos! 🚀"
                         Clicked="OnCloseClicked"
-                        BackgroundColor="#1a1a2e"
-                        TextColor="White"
+                        BackgroundColor="#4ecb8d"
+                        TextColor="#0d2e1e"
+                        FontFamily="Syne"
                         FontSize="14"
                         FontAttributes="Bold"
-                        CornerRadius="14"
-                        HeightRequest="48"
-                        HorizontalOptions="FillAndExpand"
-                        Shadow="{Shadow Brush=#1a1a2e, Offset='0,4', Radius=12, Opacity=0.2}"/>
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"/>
 
-				<!-- Link cerrar -->
-				<Label Text="Ahora no"
-                       FontSize="12"
-                       TextColor="#c8c2ba"
+                <!-- Link Ahora no -->
+                <Label Text="Ahora no"
+                       FontSize="11"
+                       TextColor="#50FFFFFF"
                        HorizontalTextAlignment="Center">
-					<Label.GestureRecognizers>
-						<TapGestureRecognizer Tapped="OnCloseClicked"/>
-					</Label.GestureRecognizers>
-				</Label>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCloseClicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
 
-			</VerticalStackLayout>
-		</Border>
+            </VerticalStackLayout>
+        </Border>
 
-	</Grid>
+    </Grid>
 </ContentPage>
