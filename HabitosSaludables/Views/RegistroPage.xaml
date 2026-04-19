@@ -3,176 +3,198 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.RegistroPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#fffbf8">
+             BackgroundColor="#f0f4f8">
 
-    <Grid RowDefinitions="175,*">
+    <Grid RowDefinitions="230,*">
 
-        <!-- Header verde menta con borde redondeado inferior -->
+        <!-- Header compacto con blobs verdes/azules -->
         <Grid Grid.Row="0">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#a8edcc" Offset="0.0"/>
-                    <GradientStop Color="#6bdba8" Offset="1.0"/>
+                    <GradientStop Color="#dff4ea" Offset="0.0"/>
+                    <GradientStop Color="#e4f0ff" Offset="1.0"/>
                 </LinearGradientBrush>
             </Grid.Background>
 
-            <!-- Puntos decorativos (esquina superior derecha) -->
-            <Grid HorizontalOptions="End"
-                  VerticalOptions="Start"
-                  Margin="0,16,18,0"
-                  RowDefinitions="10,10"
-                  ColumnDefinitions="10,10,10"
-                  RowSpacing="5"
-                  ColumnSpacing="5">
-                <Ellipse Grid.Row="0" Grid.Column="0" Fill="White" Opacity="0.5" WidthRequest="5" HeightRequest="5"/>
-                <Ellipse Grid.Row="0" Grid.Column="1" Fill="White" Opacity="0.5" WidthRequest="5" HeightRequest="5"/>
-                <Ellipse Grid.Row="0" Grid.Column="2" Fill="White" Opacity="0.5" WidthRequest="5" HeightRequest="5"/>
-                <Ellipse Grid.Row="1" Grid.Column="0" Fill="White" Opacity="0.5" WidthRequest="5" HeightRequest="5"/>
-                <Ellipse Grid.Row="1" Grid.Column="1" Fill="White" Opacity="0.5" WidthRequest="5" HeightRequest="5"/>
-                <Ellipse Grid.Row="1" Grid.Column="2" Fill="White" Opacity="0.5" WidthRequest="5" HeightRequest="5"/>
-            </Grid>
+            <!-- Blob verde superior derecho -->
+            <Ellipse HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     WidthRequest="160"
+                     HeightRequest="160"
+                     Fill="#80b8e8c8"
+                     Margin="0,-40,-30,0"/>
+
+            <!-- Blob azul inferior izquierdo -->
+            <Ellipse HorizontalOptions="Start"
+                     VerticalOptions="End"
+                     WidthRequest="100"
+                     HeightRequest="100"
+                     Fill="#66b8d4f0"
+                     Margin="-10,0,0,10"/>
+
+            <!-- Blob central difuso -->
+            <Ellipse HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     WidthRequest="120"
+                     HeightRequest="120"
+                     Fill="#40ffffff"
+                     Margin="50,20,0,0"/>
 
             <VerticalStackLayout VerticalOptions="End"
-                                 Padding="24,0,24,28"
-                                 Spacing="6">
+                                 Padding="26,0,26,28"
+                                 Spacing="10">
 
-                <!-- Tag "Es gratis" -->
-                <Border BackgroundColor="#AAEECF"
-                        StrokeThickness="0"
+                <!-- Logo glass pill -->
+                <Border BackgroundColor="#99ffffff"
+                        StrokeThickness="1"
+                        Stroke="#80c8e4d0"
                         HorizontalOptions="Start"
-                        Padding="10,4">
+                        Padding="10,7">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12"/>
+                    </Border.StrokeShape>
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="🌿" FontSize="16" VerticalOptions="Center"/>
+                        <VerticalStackLayout VerticalOptions="Center" Spacing="0">
+                            <Label Text="Hábitos Saludables"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="#1a3428"/>
+                            <Label Text="Tu bienestar diario"
+                                   FontSize="9"
+                                   TextColor="#5a8a6c"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <Label Text="Crea tu cuenta"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="#1a2e24"/>
+
+                <Label Text="Rápido, gratis y sin complicaciones"
+                       FontSize="12"
+                       TextColor="#5a7a6a"/>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Formulario con card glass -->
+        <ScrollView Grid.Row="1" BackgroundColor="#f0f4f8">
+            <VerticalStackLayout Padding="20,20,20,40" Spacing="14">
+
+                <Border BackgroundColor="#CCffffff"
+                        StrokeThickness="1"
+                        Stroke="#80d8ecdf">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20"/>
                     </Border.StrokeShape>
-                    <Label Text="✦  Es gratis"
-                           FontSize="10"
-                           FontAttributes="Bold"
-                           TextColor="#1a5c3a"/>
+                    <VerticalStackLayout Padding="20,24" Spacing="16">
+
+                        <!-- Nombre -->
+                        <VerticalStackLayout Spacing="7">
+                            <Label Text="NOMBRE COMPLETO"
+                                   FontSize="10"
+                                   TextColor="#9ab8aa"
+                                   CharacterSpacing="1.5"
+                                   FontAttributes="Bold"/>
+                            <Border BackgroundColor="#80f4fcf8"
+                                    StrokeThickness="1"
+                                    Stroke="#cce0d8"
+                                    HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="14"/>
+                                </Border.StrokeShape>
+                                <Entry x:Name="nombreEntry"
+                                       Placeholder="Ej. Carlos García"
+                                       Text="{Binding Nombre}"
+                                       PlaceholderColor="#b8d0c4"
+                                       TextColor="#1a2e24"
+                                       FontSize="14"
+                                       BackgroundColor="Transparent"
+                                       Margin="6,0"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Correo -->
+                        <VerticalStackLayout Spacing="7">
+                            <Label Text="CORREO ELECTRÓNICO"
+                                   FontSize="10"
+                                   TextColor="#9ab8aa"
+                                   CharacterSpacing="1.5"
+                                   FontAttributes="Bold"/>
+                            <Border BackgroundColor="#80f4fcf8"
+                                    StrokeThickness="1"
+                                    Stroke="#cce0d8"
+                                    HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="14"/>
+                                </Border.StrokeShape>
+                                <Entry x:Name="emailEntry"
+                                       Placeholder="tu@correo.com"
+                                       Keyboard="Email"
+                                       Text="{Binding Email}"
+                                       PlaceholderColor="#b8d0c4"
+                                       TextColor="#1a2e24"
+                                       FontSize="14"
+                                       BackgroundColor="Transparent"
+                                       Margin="6,0"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- Contraseña -->
+                        <VerticalStackLayout Spacing="7">
+                            <Label Text="CONTRASEÑA"
+                                   FontSize="10"
+                                   TextColor="#9ab8aa"
+                                   CharacterSpacing="1.5"
+                                   FontAttributes="Bold"/>
+                            <Border BackgroundColor="#80f4fcf8"
+                                    StrokeThickness="1"
+                                    Stroke="#cce0d8"
+                                    HeightRequest="50">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="14"/>
+                                </Border.StrokeShape>
+                                <Entry x:Name="contrasenaEntry"
+                                       Placeholder="Mínimo 8 caracteres"
+                                       IsPassword="True"
+                                       Text="{Binding Contrasena}"
+                                       PlaceholderColor="#b8d0c4"
+                                       TextColor="#1a2e24"
+                                       FontSize="14"
+                                       BackgroundColor="Transparent"
+                                       Margin="6,0"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <Button Text="Crear cuenta  ✦"
+                                x:Name="RegistrarBtn"
+                                Clicked="OnRegisterClicked"
+                                BackgroundColor="#1a3428"
+                                TextColor="White"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                CornerRadius="14"
+                                HeightRequest="52"
+                                Margin="0,4,0,0"/>
+
+                        <Label x:Name="LoginBtn"
+                               FontSize="13"
+                               HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="¿Ya tienes cuenta? " TextColor="#9ab8aa" FontSize="13"/>
+                                    <Span Text="Inicia sesión" TextColor="#1a3428" FontSize="13" FontAttributes="Bold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnLoginClicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                    </VerticalStackLayout>
                 </Border>
-
-                <Label Text="Crear cuenta"
-                       FontSize="26"
-                       FontAttributes="Bold"
-                       TextColor="#0d3d26"/>
-
-                <Label Text="Rápido y sin complicaciones"
-                       FontSize="11"
-                       TextColor="#3a8c5e"/>
-
-            </VerticalStackLayout>
-
-            <!-- Curva inferior -->
-            <BoxView BackgroundColor="#fffbf8"
-                     HeightRequest="24"
-                     VerticalOptions="End"
-                     CornerRadius="24,24,0,0"/>
-        </Grid>
-
-        <!-- Formulario -->
-        <ScrollView Grid.Row="1" BackgroundColor="#fffbf8">
-            <VerticalStackLayout Padding="24,14,24,32" Spacing="14">
-
-                <!-- Nombre -->
-                <VerticalStackLayout Spacing="6">
-                    <Label Text="NOMBRE COMPLETO"
-                           FontSize="10"
-                           TextColor="#aaa09a"
-                           CharacterSpacing="1.2"
-                           FontAttributes="Bold"/>
-                    <Border BackgroundColor="#f4f1ec"
-                            StrokeThickness="0"
-                            HeightRequest="50">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="12"/>
-                        </Border.StrokeShape>
-                        <Entry x:Name="nombreEntry"
-                               Placeholder="Ej. Carlos García"
-                               Text="{Binding Nombre}"
-                               PlaceholderColor="#c8c2ba"
-                               TextColor="#1a1612"
-                               FontSize="13"
-                               BackgroundColor="Transparent"
-                               Margin="4,0"/>
-                    </Border>
-                </VerticalStackLayout>
-
-                <!-- Correo -->
-                <VerticalStackLayout Spacing="6">
-                    <Label Text="CORREO ELECTRÓNICO"
-                           FontSize="10"
-                           TextColor="#aaa09a"
-                           CharacterSpacing="1.2"
-                           FontAttributes="Bold"/>
-                    <Border BackgroundColor="#f4f1ec"
-                            StrokeThickness="0"
-                            HeightRequest="50">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="12"/>
-                        </Border.StrokeShape>
-                        <Entry x:Name="emailEntry"
-                               Placeholder="tu@correo.com"
-                               Keyboard="Email"
-                               Text="{Binding Email}"
-                               PlaceholderColor="#c8c2ba"
-                               TextColor="#1a1612"
-                               FontSize="13"
-                               BackgroundColor="Transparent"
-                               Margin="4,0"/>
-                    </Border>
-                </VerticalStackLayout>
-
-                <!-- Contraseña -->
-                <VerticalStackLayout Spacing="6">
-                    <Label Text="CONTRASEÑA"
-                           FontSize="10"
-                           TextColor="#aaa09a"
-                           CharacterSpacing="1.2"
-                           FontAttributes="Bold"/>
-                    <Border BackgroundColor="#f4f1ec"
-                            StrokeThickness="0"
-                            HeightRequest="50">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="12"/>
-                        </Border.StrokeShape>
-                        <Entry x:Name="contrasenaEntry"
-                               Placeholder="Mínimo 8 caracteres"
-                               IsPassword="True"
-                               Text="{Binding Contrasena}"
-                               PlaceholderColor="#c8c2ba"
-                               TextColor="#1a1612"
-                               FontSize="13"
-                               BackgroundColor="Transparent"
-                               Margin="4,0"/>
-                    </Border>
-                </VerticalStackLayout>
-
-                <!-- Botón Registrarse -->
-                <Button Text="Registrarse  ✦"
-                        x:Name="RegistrarBtn"
-                        Clicked="OnRegisterClicked"
-                        BackgroundColor="#20c072"
-                        TextColor="White"
-                        FontSize="14"
-                        FontAttributes="Bold"
-                        CornerRadius="50"
-                        HeightRequest="52"
-                        Margin="0,8,0,0"/>
-
-                <!-- Link login -->
-                <Label x:Name="LoginBtn"
-                       FontSize="12"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,4,0,0">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="¿Ya tienes cuenta? " TextColor="#bbb5ae" FontSize="12"/>
-                            <Span Text="Inicia sesión" TextColor="#20c072" FontSize="12" FontAttributes="Bold"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnLoginClicked"/>
-                    </Label.GestureRecognizers>
-                </Label>
 
             </VerticalStackLayout>
         </ScrollView>

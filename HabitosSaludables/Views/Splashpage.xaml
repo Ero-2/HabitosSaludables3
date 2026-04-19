@@ -3,92 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.SplashPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#1a1a2e">
+             BackgroundColor="#f0f4f8">
 
-    <!-- Anillos decorativos de fondo -->
     <AbsoluteLayout>
 
-        <!-- Anillo exterior -->
-        <Ellipse AbsoluteLayout.LayoutBounds="0.5, 0.42, 320, 320"
+        <!-- Blobs decorativos de fondo para efecto glassmorphism -->
+        <Ellipse AbsoluteLayout.LayoutBounds="0.15, 0.18, 260, 260"
                  AbsoluteLayout.LayoutFlags="PositionProportional"
-                 Stroke="#1a4e3a"
-                 StrokeThickness="1"
-                 Fill="Transparent"/>
+                 Fill="#CCd4e8ff"
+                 Opacity="0.7"/>
 
-        <!-- Anillo interior -->
-        <Ellipse AbsoluteLayout.LayoutBounds="0.5, 0.42, 220, 220"
+        <Ellipse AbsoluteLayout.LayoutBounds="0.85, 0.72, 220, 220"
                  AbsoluteLayout.LayoutFlags="PositionProportional"
-                 Stroke="#1e3d2f"
-                 StrokeThickness="1"
-                 Fill="Transparent"/>
+                 Fill="#CCdcf5e8"
+                 Opacity="0.6"/>
 
-        <!-- Contenido principal centrado -->
-        <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, AutoSize"
-                             AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                             HorizontalOptions="Center"
-                             Spacing="12"
-                             Padding="40,0">
+        <Ellipse AbsoluteLayout.LayoutBounds="0.5, 0.55, 180, 180"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                 Fill="#CCf0e8ff"
+                 Opacity="0.4"/>
 
-            <!-- Ícono -->
-            <Border BackgroundColor="#1e4d36"
-                    StrokeThickness="1"
-                    Stroke="#4ecb8d"
-                    HorizontalOptions="Center"
-                    WidthRequest="80"
-                    HeightRequest="80">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="22"/>
-                </Border.StrokeShape>
-                <Label Text="🌿"
-                       FontSize="38"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-            </Border>
+        <!-- Card glassmorphism central -->
+        <Border AbsoluteLayout.LayoutBounds="0.5, 0.5, 280, 340"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                BackgroundColor="#CCffffff"
+                StrokeThickness="1"
+                Stroke="#80ffffff">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="24"/>
+            </Border.StrokeShape>
 
-            <!-- Nombre de la app -->
-            <Label Text="Hábitos"
-                   FontSize="32"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   HorizontalTextAlignment="Center"
-                   Margin="0,8,0,-10"/>
-            <Label Text="Saludables"
-                   FontSize="32"
-                   FontAttributes="Bold"
-                   TextColor="#4ecb8d"
-                   HorizontalTextAlignment="Center"/>
+            <VerticalStackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="12"
+                                 Padding="28">
 
-            <!-- Tagline -->
-            <Label Text="TU BIENESTAR DIARIO"
-                   FontSize="11"
-                   TextColor="#4a6658"
-                   CharacterSpacing="3"
-                   HorizontalTextAlignment="Center"
-                   Margin="0,6,0,0"/>
+                <!-- Icono con fondo glass -->
+                <Border BackgroundColor="#99ffffff"
+                        StrokeThickness="1"
+                        Stroke="#80e0e8f0"
+                        HorizontalOptions="Center"
+                        WidthRequest="80"
+                        HeightRequest="80">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+                    <Label Text="🌿"
+                           FontSize="38"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
 
-        </VerticalStackLayout>
+                <Label Text="Hábitos"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="#1a2236"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,6,0,-6"/>
 
-        <!-- Indicadores de puntos en la parte inferior -->
-        <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.88, AutoSize, AutoSize"
-                               AbsoluteLayout.LayoutFlags="PositionProportional"
-                               Spacing="8">
-            <!-- Punto activo (más largo) -->
-            <BoxView BackgroundColor="#4ecb8d"
-                     WidthRequest="20"
-                     HeightRequest="6"
-                     CornerRadius="3"
-                     VerticalOptions="Center"/>
-            <BoxView BackgroundColor="#2a3d35"
-                     WidthRequest="6"
-                     HeightRequest="6"
-                     CornerRadius="3"
-                     VerticalOptions="Center"/>
-            <BoxView BackgroundColor="#2a3d35"
-                     WidthRequest="6"
-                     HeightRequest="6"
-                     CornerRadius="3"
-                     VerticalOptions="Center"/>
-        </HorizontalStackLayout>
+                <Label Text="Saludables"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="#5a7a99"
+                       HorizontalTextAlignment="Center"/>
+
+                <Label Text="TU BIENESTAR DIARIO"
+                       FontSize="10"
+                       TextColor="#9bb0c4"
+                       CharacterSpacing="2.5"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,6,0,0"/>
+
+                <!-- Puntos de carga -->
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="8"
+                                       Margin="0,12,0,0">
+                    <BoxView BackgroundColor="#1a2236"
+                             WidthRequest="22"
+                             HeightRequest="5"
+                             CornerRadius="3"/>
+                    <BoxView BackgroundColor="#ccd8e4"
+                             WidthRequest="5"
+                             HeightRequest="5"
+                             CornerRadius="3"/>
+                    <BoxView BackgroundColor="#ccd8e4"
+                             WidthRequest="5"
+                             HeightRequest="5"
+                             CornerRadius="3"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Border>
 
     </AbsoluteLayout>
 </ContentPage>
