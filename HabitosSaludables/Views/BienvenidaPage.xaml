@@ -3,152 +3,125 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.BienvenidaPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f0f4f8">
+             BackgroundColor="#f2faf5">
 
-    <Grid RowDefinitions="260,*">
+    <Grid RowDefinitions="*,Auto">
 
-        <!-- Header compacto con blobs ilustrativos -->
-        <Grid Grid.Row="0">
+        <!-- Zona superior ilustrada -->
+        <Grid Grid.Row="0" BackgroundColor="#f2faf5">
 
-            <!-- Fondo degradado suave -->
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#e8f0ff" Offset="0.0"/>
-                    <GradientStop Color="#dff0ea" Offset="1.0"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-
-            <!-- Blobs decorativos -->
-            <Ellipse HorizontalOptions="End"
+            <!-- Bloque verde oscuro como acento superior -->
+            <BoxView BackgroundColor="#0d2918"
+                     HeightRequest="6"
                      VerticalOptions="Start"
-                     WidthRequest="150"
-                     HeightRequest="150"
-                     Fill="#99c8deff"
-                     Margin="0,-30,-30,0"/>
+                     HorizontalOptions="Fill"/>
 
-            <Ellipse HorizontalOptions="Start"
-                     VerticalOptions="End"
-                     WidthRequest="100"
+            <!-- Forma decorativa esquina derecha -->
+            <BoxView BackgroundColor="#e0f2e8"
+                     WidthRequest="180"
+                     HeightRequest="180"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     Rotation="30"
+                     Margin="0,-40,-50,0"
+                     CornerRadius="32"/>
+
+            <!-- Círculo decorativo izquierda -->
+            <Ellipse WidthRequest="100"
                      HeightRequest="100"
-                     Fill="#99c8f0dd"
-                     Margin="-20,0,0,20"/>
+                     Fill="#d0edda"
+                     HorizontalOptions="Start"
+                     VerticalOptions="End"
+                     Margin="-20,0,0,60"/>
 
-            <Ellipse HorizontalOptions="Center"
-                     VerticalOptions="Center"
-                     WidthRequest="80"
-                     HeightRequest="80"
-                     Fill="#66ffffff"
-                     Margin="60,-40,0,0"/>
+            <VerticalStackLayout VerticalOptions="Center"
+                                 Padding="32,0,32,0"
+                                 Spacing="16">
 
-            <!-- Contenido del header -->
-            <VerticalStackLayout VerticalOptions="End"
-                                 Padding="28,0,28,32"
-                                 Spacing="10">
-
-                <!-- Logo glass pill -->
-                <Border BackgroundColor="#99ffffff"
-                        StrokeThickness="1"
-                        Stroke="#80d0e4f4"
+                <!-- Badge app -->
+                <Border BackgroundColor="#e0f2e8"
+                        StrokeThickness="0"
                         HorizontalOptions="Start"
-                        Padding="12,8">
+                        Padding="12,6">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14"/>
+                        <RoundRectangle CornerRadius="8"/>
                     </Border.StrokeShape>
-                    <HorizontalStackLayout Spacing="8">
-                        <Label Text="🌿" FontSize="18" VerticalOptions="Center"/>
+                    <HorizontalStackLayout Spacing="6">
+                        <Label Text="🌿" FontSize="14" VerticalOptions="Center"/>
                         <Label Text="Hábitos Saludables"
-                               FontSize="13"
+                               FontSize="11"
                                FontAttributes="Bold"
-                               TextColor="#1a2c3d"
+                               TextColor="#1a4d2e"
                                VerticalOptions="Center"/>
                     </HorizontalStackLayout>
                 </Border>
 
-                <Label Text="Empieza hoy,&#10;transforma mañana."
-                       FontSize="26"
+                <Label Text="Mejor tú,&#10;cada día."
+                       FontSize="38"
                        FontAttributes="Bold"
-                       TextColor="#1a2c3d"
-                       LineHeight="1.2"/>
+                       TextColor="#0d2918"
+                       LineHeight="1.1"
+                       CharacterSpacing="-0.5"/>
 
-                <Label Text="Construye hábitos que duran toda la vida."
-                       FontSize="12"
-                       TextColor="#6a8ca4"/>
+                <Label Text="Construye rutinas que transforman tu vida con hábitos simples y constantes."
+                       FontSize="14"
+                       TextColor="#5a8a6a"
+                       LineHeight="1.5"/>
+
+                <!-- Stat pills -->
+                <HorizontalStackLayout Spacing="10" Margin="0,8,0,0">
+                    <Border BackgroundColor="#e0f2e8" StrokeThickness="0" Padding="12,7">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Label Text="✦  100% gratis"
+                               FontSize="11" FontAttributes="Bold" TextColor="#1a4d2e"/>
+                    </Border>
+                    <Border BackgroundColor="#e0f2e8" StrokeThickness="0" Padding="12,7">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Label Text="Sin anuncios"
+                               FontSize="11" FontAttributes="Bold" TextColor="#1a4d2e"/>
+                    </Border>
+                </HorizontalStackLayout>
 
             </VerticalStackLayout>
         </Grid>
 
-        <!-- Cuerpo con card glass -->
-        <ScrollView Grid.Row="1" BackgroundColor="#f0f4f8">
-            <VerticalStackLayout Padding="20,24,20,40" Spacing="14">
+        <!-- Botones inferiores -->
+        <VerticalStackLayout Grid.Row="1"
+                             BackgroundColor="#f2faf5"
+                             Padding="24,16,24,52"
+                             Spacing="12">
 
-                <!-- Card glass con botones -->
-                <Border BackgroundColor="#CCffffff"
-                        StrokeThickness="1"
-                        Stroke="#80e0eaf4">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="20"/>
-                    </Border.StrokeShape>
-                    <VerticalStackLayout Padding="20,22" Spacing="12">
+            <Button Text="Comenzar ahora"
+                    x:Name="RegistroBtn"
+                    Clicked="OnRegisterClicked"
+                    BackgroundColor="#0d2918"
+                    TextColor="#4ecb8d"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    CornerRadius="16"
+                    HeightRequest="56"/>
 
-                        <Label Text="¿Qué deseas hacer?"
-                               FontSize="11"
-                               TextColor="#9bb0c4"
-                               HorizontalTextAlignment="Center"/>
+            <Border BackgroundColor="Transparent"
+                    StrokeThickness="1.5"
+                    Stroke="#c0dfc8"
+                    HeightRequest="52">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16"/>
+                </Border.StrokeShape>
+                <Button Text="Ya tengo cuenta"
+                        x:Name="LoginBtn"
+                        Clicked="OnLoginClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#2a6644"
+                        FontSize="14"
+                        FontAttributes="Bold"/>
+            </Border>
 
-                        <Button Text="Registrarse"
-                                x:Name="RegistroBtn"
-                                Clicked="OnRegisterClicked"
-                                BackgroundColor="#1a2c3d"
-                                TextColor="#ffffff"
-                                FontSize="14"
-                                FontAttributes="Bold"
-                                CornerRadius="14"
-                                HeightRequest="52"/>
-
-                        <Border BackgroundColor="#80f4f8fc"
-                                StrokeThickness="1"
-                                Stroke="#ccd8e8"
-                                HeightRequest="52">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="14"/>
-                            </Border.StrokeShape>
-                            <Button Text="Iniciar sesión"
-                                    x:Name="LoginBtn"
-                                    Clicked="OnLoginClicked"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#4a6a84"
-                                    FontSize="14"
-                                    FontAttributes="Bold"/>
-                        </Border>
-
-                        <!-- Separador -->
-                        <HorizontalStackLayout HorizontalOptions="Center"
-                                               Spacing="10"
-                                               Margin="0,4">
-                            <BoxView BackgroundColor="#dde8f0"
-                                     HeightRequest="1"
-                                     WidthRequest="50"
-                                     VerticalOptions="Center"/>
-                            <Label Text="o continúa con"
-                                   FontSize="11"
-                                   TextColor="#b0c4d4"
-                                   VerticalOptions="Center"/>
-                            <BoxView BackgroundColor="#dde8f0"
-                                     HeightRequest="1"
-                                     WidthRequest="50"
-                                     VerticalOptions="Center"/>
-                        </HorizontalStackLayout>
-
-                        <Label Text="v 1.0.0"
-                               FontSize="10"
-                               TextColor="#c4d4e0"
-                               HorizontalTextAlignment="Center"/>
-
-                    </VerticalStackLayout>
-                </Border>
-
-            </VerticalStackLayout>
-        </ScrollView>
+        </VerticalStackLayout>
 
     </Grid>
 </ContentPage>

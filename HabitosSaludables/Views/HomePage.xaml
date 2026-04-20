@@ -4,209 +4,169 @@
              xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
              x:Class="HabitosSaludables.Views.HomePage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f0f4f8">
+             BackgroundColor="#f2faf5">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto">
 
-        <!-- HEADER compacto con blobs -->
-        <Grid Grid.Row="0">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#e4ecff" Offset="0.0"/>
-                    <GradientStop Color="#dff4ea" Offset="1.0"/>
-                </LinearGradientBrush>
-            </Grid.Background>
+        <Grid Grid.Row="0" BackgroundColor="#0d2918">
 
-            <!-- Blobs decorativos -->
-            <Ellipse HorizontalOptions="End"
-                     VerticalOptions="Start"
-                     WidthRequest="140"
-                     HeightRequest="140"
-                     Fill="#66c0d4ff"
-                     Margin="0,-30,-20,0"/>
-            <Ellipse HorizontalOptions="Start"
-                     VerticalOptions="End"
-                     WidthRequest="80"
-                     HeightRequest="80"
-                     Fill="#66b8e8c8"
-                     Margin="20,0,0,-10"/>
+            <Ellipse HorizontalOptions="End" VerticalOptions="Start"
+                     WidthRequest="120" HeightRequest="120"
+                     Fill="#1a4d2e" Margin="0,-20,-20,0"/>
+            <Ellipse HorizontalOptions="Start" VerticalOptions="End"
+                     WidthRequest="60" HeightRequest="60"
+                     Fill="#1e3d28" Opacity="0.5" Margin="20,0,0,-10"/>
 
-            <Grid Padding="22,52,22,20">
+            <Grid Padding="22,52,22,22">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
-                    <!-- Nueva columna para Logout -->
                 </Grid.ColumnDefinitions>
 
                 <VerticalStackLayout Grid.Column="0" Spacing="3">
                     <Label Text="BUENOS DÍAS"
-                           FontSize="10"
-                           TextColor="#7a9ab8"
-                           CharacterSpacing="2"
-                           FontAttributes="Bold"/>
+                           FontSize="10" TextColor="#4ecb8d"
+                           CharacterSpacing="2.2" FontAttributes="Bold"/>
                     <Label Text="{Binding NombreUsuario}"
-                           FontSize="22"
-                           FontAttributes="Bold"
-                           TextColor="#1a2040"/>
+                           FontSize="24" FontAttributes="Bold" TextColor="#ffffff"
+                           CharacterSpacing="-0.3"/>
+                    <Label Text="¿Listo para tus hábitos de hoy?"
+                           FontSize="11" TextColor="#4a7a58"/>
                 </VerticalStackLayout>
 
-                <!-- Avatar glass -->
                 <Border Grid.Column="1"
-                        BackgroundColor="#99ffffff"
-                        StrokeThickness="1.5"
-                        Stroke="#80c0d8f0"
-                        WidthRequest="44"
-                        HeightRequest="44"
-                        VerticalOptions="Center"
-                        Margin="0,0,10,0">
+                        BackgroundColor="#1a4d2e"
+                        StrokeThickness="2"
+                        Stroke="#4ecb8d"
+                        WidthRequest="46"
+                        HeightRequest="46"
+                        VerticalOptions="Center">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="22"/>
+                        <RoundRectangle CornerRadius="23"/>
                     </Border.StrokeShape>
                     <Label Text="C"
-                           FontSize="17"
-                           FontAttributes="Bold"
-                           TextColor="#1a2040"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
+                           FontSize="18" FontAttributes="Bold"
+                           TextColor="#4ecb8d"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Border>
 
-                <!-- Botón Logout -->
                 <Border Grid.Column="2"
-                        BackgroundColor="#80ffdede"
-                        StrokeThickness="1"
-                        Stroke="#80ffb0b0"
-                        WidthRequest="44"
-                        HeightRequest="44"
-                        VerticalOptions="Center">
+                        BackgroundColor="#1e3d28"
+                        StrokeThickness="0"
+                        WidthRequest="46"
+                        HeightRequest="46"
+                        VerticalOptions="Center"
+                        Margin="12,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="23"/>
+                    </Border.StrokeShape>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnLogoutClicked"/>
                     </Border.GestureRecognizers>
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="22"/>
-                    </Border.StrokeShape>
-                    <Label Text="🚪" 
+                    <Label Text="🚪"
                            FontSize="18"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Border>
             </Grid>
         </Grid>
 
-        <!-- ANILLOS + RACHA en card glass -->
-        <Grid Grid.Row="1" Padding="18,14,18,14">
-
-            <Border BackgroundColor="#CCffffff"
-                    StrokeThickness="1"
-                    Stroke="#80dce8f8">
+        <Grid Grid.Row="1" Padding="18,0,18,12" Margin="0,-22,0,0">
+            <Border BackgroundColor="#1a4d2e"
+                    StrokeThickness="0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"/>
                 </Border.StrokeShape>
-                <Grid Padding="14,14" ColumnDefinitions="*,*,*,Auto" ColumnSpacing="0">
+                <Grid Padding="18,16" ColumnDefinitions="*,*,*,Auto" ColumnSpacing="0">
 
-                    <!-- Anillo Hábitos -->
                     <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="6">
-                        <Grid WidthRequest="58" HeightRequest="58" HorizontalOptions="Center">
-                            <Ellipse WidthRequest="58" HeightRequest="58"
-                                     Stroke="#e8f0f8" StrokeThickness="5" Fill="Transparent"/>
-                            <Ellipse WidthRequest="46" HeightRequest="46"
-                                     Stroke="#3a6aaa" StrokeThickness="4.5" Fill="Transparent"
+                        <Grid WidthRequest="54" HeightRequest="54" HorizontalOptions="Center">
+                            <Ellipse WidthRequest="54" HeightRequest="54"
+                                     Stroke="#0d2918" StrokeThickness="5" Fill="Transparent"/>
+                            <Ellipse WidthRequest="44" HeightRequest="44"
+                                     Stroke="#4ecb8d" StrokeThickness="4.5" Fill="Transparent"
                                      HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="{Binding HabitosCompletados, StringFormat='{0}/3'}"
-                                   FontSize="10" FontAttributes="Bold"
-                                   TextColor="#1a2040"
+                                   FontSize="10" FontAttributes="Bold" TextColor="#ffffff"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
-                        <Label Text="Hábitos" FontSize="9" TextColor="#9ab8d0"
-                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Hábitos" FontSize="9" TextColor="#4a7a58" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
 
-                    <!-- Anillo Sueño -->
                     <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="6">
-                        <Grid WidthRequest="58" HeightRequest="58" HorizontalOptions="Center">
-                            <Ellipse WidthRequest="58" HeightRequest="58"
-                                     Stroke="#e8f0f8" StrokeThickness="5" Fill="Transparent"/>
-                            <Ellipse WidthRequest="46" HeightRequest="46"
-                                     Stroke="#7a5ab8" StrokeThickness="4.5" Fill="Transparent"
+                        <Grid WidthRequest="54" HeightRequest="54" HorizontalOptions="Center">
+                            <Ellipse WidthRequest="54" HeightRequest="54"
+                                     Stroke="#0d2918" StrokeThickness="5" Fill="Transparent"/>
+                            <Ellipse WidthRequest="44" HeightRequest="44"
+                                     Stroke="#2e8a54" StrokeThickness="4.5" Fill="Transparent"
                                      HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="8h"
-                                   FontSize="11" FontAttributes="Bold"
-                                   TextColor="#1a2040"
+                                   FontSize="11" FontAttributes="Bold" TextColor="#ffffff"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
-                        <Label Text="Sueño" FontSize="9" TextColor="#9ab8d0"
-                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Sueño" FontSize="9" TextColor="#4a7a58" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
 
-                    <!-- Anillo Agua -->
                     <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="6">
-                        <Grid WidthRequest="58" HeightRequest="58" HorizontalOptions="Center">
-                            <Ellipse WidthRequest="58" HeightRequest="58"
-                                     Stroke="#e8f0f8" StrokeThickness="5" Fill="Transparent"/>
-                            <Ellipse WidthRequest="46" HeightRequest="46"
-                                     Stroke="#3a9a7a" StrokeThickness="4.5" Fill="Transparent"
+                        <Grid WidthRequest="54" HeightRequest="54" HorizontalOptions="Center">
+                            <Ellipse WidthRequest="54" HeightRequest="54"
+                                     Stroke="#0d2918" StrokeThickness="5" Fill="Transparent"/>
+                            <Ellipse WidthRequest="44" HeightRequest="44"
+                                     Stroke="#1e6640" StrokeThickness="4.5" Fill="Transparent"
                                      HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="1.2L"
-                                   FontSize="10" FontAttributes="Bold"
-                                   TextColor="#1a2040"
+                                   FontSize="10" FontAttributes="Bold" TextColor="#ffffff"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
-                        <Label Text="Agua" FontSize="9" TextColor="#9ab8d0"
-                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Agua" FontSize="9" TextColor="#4a7a58" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
 
-                    <!-- Pill racha glass -->
                     <Border Grid.Column="3"
-                            BackgroundColor="#80fff4e8"
-                            StrokeThickness="1"
-                            Stroke="#e0cca0"
+                            BackgroundColor="#0d2918"
+                            StrokeThickness="1" Stroke="#2a5e38"
                             VerticalOptions="Center"
                             Padding="10,10">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="14"/>
                         </Border.StrokeShape>
-                        <HorizontalStackLayout Spacing="5">
-                            <Label Text="🔥" FontSize="16" VerticalOptions="Center"/>
-                            <VerticalStackLayout Spacing="0" VerticalOptions="Center">
-                                <Label Text="{Binding RachaTotal}"
-                                       FontSize="17" FontAttributes="Bold"
-                                       TextColor="#8a5000" LineHeight="1"/>
-                                <Label Text="días" FontSize="9" TextColor="#b88a50"/>
-                            </VerticalStackLayout>
-                        </HorizontalStackLayout>
+                        <VerticalStackLayout Spacing="1" HorizontalOptions="Center">
+                            <Label Text="🔥" FontSize="16" HorizontalOptions="Center"/>
+                            <Label Text="{Binding RachaTotal}"
+                                   FontSize="16" FontAttributes="Bold"
+                                   TextColor="#4ecb8d" HorizontalOptions="Center" LineHeight="1"/>
+                            <Label Text="días" FontSize="8" TextColor="#4a7a58" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
                     </Border>
 
                 </Grid>
             </Border>
         </Grid>
 
-        <!-- LISTA DE HÁBITOS -->
-        <ScrollView Grid.Row="2" BackgroundColor="#f0f4f8">
-            <VerticalStackLayout Padding="18,0,18,12" Spacing="0">
+        <ScrollView Grid.Row="2" BackgroundColor="#f2faf5">
+            <VerticalStackLayout Padding="18,4,18,12" Spacing="0">
 
-                <!-- Cabecera sección -->
-                <Grid Padding="4,0,4,10">
+                <Grid Padding="2,0,2,12">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0"
                            Text="Hábitos de hoy"
-                           FontSize="15" FontAttributes="Bold"
-                           TextColor="#1a2040"/>
+                           FontSize="16" FontAttributes="Bold" TextColor="#0d2918"
+                           CharacterSpacing="-0.2"/>
                     <Label Grid.Column="1"
                            Text="Ver todos ›"
-                           FontSize="11" TextColor="#7a9ab8" VerticalOptions="Center"/>
+                           FontSize="11" TextColor="#3a7a52"
+                           FontAttributes="Bold" VerticalOptions="Center"/>
                 </Grid>
 
                 <CollectionView ItemsSource="{Binding HabitosPendientes}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <!-- Card glass por hábito -->
                             <Border Margin="0,0,0,10"
-                                    BackgroundColor="#CCffffff"
-                                    StrokeThickness="1"
-                                    Stroke="#80dce8f8">
+                                    BackgroundColor="#ffffff"
+                                    StrokeThickness="1.5"
+                                    Stroke="#d8eede">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="16"/>
                                 </Border.StrokeShape>
@@ -215,18 +175,15 @@
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=MarcarCompletadoCommand}"
                                         CommandParameter="{Binding .}"/>
                                 </Border.GestureRecognizers>
-                                <Grid Padding="14,12" ColumnDefinitions="40,*,36">
+                                <Grid Padding="14,14" ColumnDefinitions="46,*,36">
 
-                                    <!-- Icono con fondo glass -->
                                     <Border Grid.Column="0"
-                                            BackgroundColor="#80f0f6fc"
-                                            StrokeThickness="1"
-                                            Stroke="#ccdaea"
-                                            WidthRequest="36"
-                                            HeightRequest="36"
+                                            BackgroundColor="#e0f2e8"
+                                            StrokeThickness="0"
+                                            WidthRequest="38" HeightRequest="38"
                                             VerticalOptions="Center">
                                         <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="10"/>
+                                            <RoundRectangle CornerRadius="11"/>
                                         </Border.StrokeShape>
                                         <Label Text="{Binding Icono}"
                                                FontSize="18"
@@ -238,25 +195,23 @@
                                                          VerticalOptions="Center"
                                                          Spacing="3" Margin="10,0">
                                         <Label Text="{Binding Nombre}"
-                                               FontSize="13" FontAttributes="Bold"
-                                               TextColor="#1a2040"/>
-                                        <Label Text="{Binding RachaActual, StringFormat='🔥 Racha: {0} días'}"
-                                               FontSize="10" TextColor="#9ab8d0"/>
+                                               FontSize="14" FontAttributes="Bold"
+                                               TextColor="#0d2918"/>
+                                        <Label Text="{Binding RachaActual, StringFormat='🔥 {0} días seguidos'}"
+                                               FontSize="10" TextColor="#8ab89a"/>
                                     </VerticalStackLayout>
 
-                                    <!-- Check glass -->
                                     <Border Grid.Column="2"
-                                            BackgroundColor="#80eef4fc"
-                                            StrokeThickness="1"
-                                            Stroke="#ccdaea"
-                                            WidthRequest="32"
-                                            HeightRequest="32"
+                                            BackgroundColor="#e0f2e8"
+                                            StrokeThickness="1.5"
+                                            Stroke="#b0d8bc"
+                                            WidthRequest="32" HeightRequest="32"
                                             VerticalOptions="Center">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="10"/>
                                         </Border.StrokeShape>
                                         <Button BackgroundColor="Transparent"
-                                                TextColor="#b8cce0"
+                                                TextColor="#3a7a52"
                                                 FontSize="14" FontAttributes="Bold"
                                                 Text="✓"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=MarcarCompletadoCommand}"
@@ -273,27 +228,25 @@
 
                 <Label Text="🎉  ¡Todos los hábitos completados!"
                        IsVisible="{Binding HabitosPendientes.Count, Converter={StaticResource CountToBoolConverter}}"
-                       FontSize="13" TextColor="#7a9ab8"
+                       FontSize="13" TextColor="#3a7a52" FontAttributes="Bold"
                        HorizontalOptions="Center" Margin="0,14"/>
 
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- BARRA INFERIOR glass -->
         <Border Grid.Row="3"
-                BackgroundColor="#CCffffff"
-                StrokeThickness="1"
-                Stroke="#80dce8f4"
-                Margin="14,0,14,20">
+                BackgroundColor="#0d2918"
+                StrokeThickness="0"
+                Margin="16,0,16,24">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20"/>
             </Border.StrokeShape>
-            <Grid ColumnDefinitions="*,*,*"
-                  Padding="10,10"
-                  ColumnSpacing="8">
+            <Grid ColumnDefinitions="*,*,*,*"
+                  Padding="8,10"
+                  ColumnSpacing="4">
 
                 <Border Grid.Column="0"
-                        BackgroundColor="#1a2040"
+                        BackgroundColor="#4ecb8d"
                         StrokeThickness="0"
                         Padding="0,10">
                     <Border.StrokeShape>
@@ -304,42 +257,47 @@
                     </Border.GestureRecognizers>
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
                         <Label Text="⭐" FontSize="16" HorizontalOptions="Center"/>
-                        <Label Text="Registrar" FontSize="9" FontAttributes="Bold"
-                               TextColor="#ffffff" HorizontalOptions="Center"/>
+                        <Label Text="Inicio" FontSize="9" FontAttributes="Bold"
+                               TextColor="#0d2918" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
                 <Border Grid.Column="1"
-                        BackgroundColor="#80f0f6fc"
-                        StrokeThickness="1" Stroke="#ccdaea"
+                        BackgroundColor="Transparent"
+                        StrokeThickness="0"
                         Padding="0,10">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14"/>
-                    </Border.StrokeShape>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnVerEstadisticasClicked"/>
                     </Border.GestureRecognizers>
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
                         <Label Text="📊" FontSize="16" HorizontalOptions="Center"/>
-                        <Label Text="Stats" FontSize="9" FontAttributes="Bold"
-                               TextColor="#9ab8d0" HorizontalOptions="Center"/>
+                        <Label Text="Stats" FontSize="9" TextColor="#4a7a58" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
                 <Border Grid.Column="2"
-                        BackgroundColor="#80f0f6fc"
-                        StrokeThickness="1" Stroke="#ccdaea"
+                        BackgroundColor="Transparent"
+                        StrokeThickness="0"
                         Padding="0,10">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14"/>
-                    </Border.StrokeShape>
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnConfiguracionClicked"/>
+                        <TapGestureRecognizer Tapped="OnMisHabitosClicked"/>
                     </Border.GestureRecognizers>
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
-                        <Label Text="⚙️" FontSize="16" HorizontalOptions="Center"/>
-                        <Label Text="Config" FontSize="9" FontAttributes="Bold"
-                               TextColor="#9ab8d0" HorizontalOptions="Center"/>
+                        <Label Text="📋" FontSize="16" HorizontalOptions="Center"/>
+                        <Label Text="Hábitos" FontSize="9" TextColor="#4a7a58" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Column="3"
+                        BackgroundColor="Transparent"
+                        StrokeThickness="0"
+                        Padding="0,10">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPerfilClicked"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
+                        <Label Text="👤" FontSize="16" HorizontalOptions="Center"/>
+                        <Label Text="Perfil" FontSize="9" TextColor="#4a7a58" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 

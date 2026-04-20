@@ -5,6 +5,7 @@
        xmlns:views="clr-namespace:HabitosSaludables.Views"
        Shell.FlyoutBehavior="Disabled">
 
+    <!-- Rutas disponibles -->
     <ShellContent Title="Bienvenida" 
                   ContentTemplate="{DataTemplate views:BienvenidaPage}"
                   Route="BienvenidaPage" />
@@ -17,5 +18,8 @@
     <ShellContent Title="Home" 
                   ContentTemplate="{DataTemplate views:HomePage}"
                   Route="HomePage" />
+    <ShellContent Title="Perfil" 
+                  ContentTemplate="{DataTemplate views:PerfilPage}"
+                  Route="PerfilPage" />
 
 </Shell>
